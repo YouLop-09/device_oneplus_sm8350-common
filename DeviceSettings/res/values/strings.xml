@@ -118,8 +118,8 @@
     <string name="game_mode_summary">Force enable 240Hz touch sampling rate for all applications</string>
     <string name="game_mode_warning">Increases power consumption</string>
     <string name="edge_touch_title">Edge Touch</string>
-    <string name="edge_touch_summary">Unlock limit edge touch and improve your multi-touch experience in games</string>
-    <string name="edge_touch_warning">May increase the possibility of accidental touch</string>
+    <string name="edge_touch_summary">Improve multi-touch experience at the edges of the screen in games</string>
+    <string name="edge_touch_warning">Increases possibility of accidental touch</string>
 
     <!-- Unsupported feature -->
     <string name="unsupported_feature">This feature is unavailable on current kernel</string>
