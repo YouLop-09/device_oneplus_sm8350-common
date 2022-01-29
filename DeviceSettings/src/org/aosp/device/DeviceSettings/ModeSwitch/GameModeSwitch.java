@@ -19,7 +19,6 @@ package org.aosp.device.DeviceSettings.ModeSwitch;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.provider.Settings;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 
@@ -29,12 +28,6 @@ import org.aosp.device.DeviceSettings.Utils.Utils;
 public class GameModeSwitch implements OnPreferenceChangeListener {
 
     private static final String FILE = "/proc/touchpanel/game_switch_enable";
-
-    private Context mContext;
-
-    public GameModeSwitch(Context context) {
-        mContext = context;
-    }
 
     public static String getFile() {
         if (Utils.fileWritable(FILE)) {
@@ -53,14 +46,8 @@ public class GameModeSwitch implements OnPreferenceChangeListener {
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        final boolean isSystemGamingModeActived = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.GAMING_MODE_ACTIVE, 0) == 1;
-        final boolean isHighTouchSampleEnabled = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.GAMING_MODE_HIGH_TOUCH_SAMPLE, 0) == 1;
-        if (!isSystemGamingModeActived || !isHighTouchSampleEnabled) {
-            Boolean enabled = (Boolean) newValue;
-            Utils.writeValue(getFile(), enabled ? "1" : "0");
-        }
+        Boolean enabled = (Boolean) newValue;
+        Utils.writeValue(getFile(), enabled ? "1" : "0");
         return true;
     }
 }
