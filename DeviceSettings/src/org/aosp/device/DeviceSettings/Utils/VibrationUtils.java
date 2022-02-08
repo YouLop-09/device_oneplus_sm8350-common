@@ -27,7 +27,9 @@ public class VibrationUtils {
         final Vibrator mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         final boolean hapticEnabled = Settings.System.getInt(context.getContentResolver(),
                 Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0;
-        if (mVibrator != null && mVibrator.hasVibrator() && hapticEnabled) {
+        final boolean hapticOnSwitch = Settings.System.getInt(context.getContentResolver(),
+                Settings.System.HAPTIC_ON_SWITCH, 1) != 0;
+        if (mVibrator != null && mVibrator.hasVibrator() && hapticEnabled && hapticOnSwitch) {
             mVibrator.vibrate(VibrationEffect.get(effect));
         }
     }
